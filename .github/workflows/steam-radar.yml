@@ -1,0 +1,107 @@
+name: Collect Steam radar
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      source_commit_sha:
+        description: "Replay an existing data commit instead of collecting"
+        required: false
+        type: string
+      enrich_search:
+        description: "Force Google Suggest and SERP enrichment for a new collection"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: steam-radar-collector
+  cancel-in-progress: false
+
+jobs:
+  collect-and-sync:
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.RADAR_COLLECTION_MODE == 'github-actions' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RADAR_INGEST_URL: ${{ secrets.RADAR_INGEST_URL }}
+      RADAR_INGEST_SECRET: ${{ secrets.RADAR_INGEST_SECRET }}
+      SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+      RADAR_FORCE_ENRICHMENT: ${{ inputs.enrich_search || 'false' }}
+
+    steps:
+      - name: Check out public collector and data
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ inputs.source_commit_sha || 'main' }}
+          fetch-depth: 1
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+
+      - name: Validate configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$RADAR_INGEST_URL"
+          test -n "$RADAR_INGEST_SECRET"
+
+      - name: Collect public radar evidence
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '' }}
+        working-directory: collector
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --experimental-strip-types scripts/radar/collect.ts \
+            --output "$GITHUB_WORKSPACE/radar-payload.json"
+
+      - name: Persist collection in this repository
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '' }}
+        working-directory: collector
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --experimental-strip-types scripts/radar/persist-data.ts \
+            --payload "$GITHUB_WORKSPACE/radar-payload.json" \
+            --repo "$GITHUB_WORKSPACE"
+
+      - name: Commit radar data
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "site-launch-hub-radar[bot]"
+          git config user.email "site-launch-hub-radar[bot]@users.noreply.github.com"
+          git add manifests schema steam
+          if ! git diff --cached --quiet; then
+            run_id="$(node -p "JSON.parse(require('fs').readFileSync('manifests/latest.json','utf8')).runId")"
+            git commit \
+              -m "Preserve evidence for $run_id" \
+              -m "Constraint: Only sanitized public Steam evidence is stored\nConfidence: high\nScope-risk: narrow\nTested: Payload schema validation and checksum generation"
+            git push origin HEAD:main
+          fi
+
+      - name: Resolve committed payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_commit="$(git rev-parse HEAD)"
+          payload_path="$(node -p "JSON.parse(require('fs').readFileSync('manifests/latest.json','utf8')).payloadPath")"
+          test -f "$payload_path"
+          printf 'RADAR_SOURCE_COMMIT=%s\n' "$source_commit" >> "$GITHUB_ENV"
+          printf 'RADAR_PAYLOAD_PATH=%s\n' "$GITHUB_WORKSPACE/$payload_path" >> "$GITHUB_ENV"
+
+      - name: Synchronize D1 projection
+        working-directory: collector
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --experimental-strip-types scripts/radar/sync-d1.ts \
+            --payload "$RADAR_PAYLOAD_PATH" \
+            --source-commit "$RADAR_SOURCE_COMMIT"

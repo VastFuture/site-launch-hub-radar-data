@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://site-launch-hub.invalid/schemas/steam-radar-data-v1.schema.json",
+  "title": "Steam Radar Collection Payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "runId", "scheduledAt", "collectedAt", "collectorVersion", "source", "providerStatus", "items"],
+  "properties": {
+    "schemaVersion": { "const": "steam-radar-data-v1" },
+    "runId": { "type": "string", "pattern": "^steam-radar:[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}$" },
+    "scheduledAt": { "type": "string", "format": "date-time" },
+    "collectedAt": { "type": "string", "format": "date-time" },
+    "collectorVersion": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "source": {
+      "type": "object",
+      "required": ["name", "url", "scope"],
+      "properties": {
+        "name": { "const": "Steam Search" },
+        "url": { "type": "string" },
+        "scope": { "type": "string" }
+      }
+    },
+    "providerStatus": {
+      "type": "object",
+      "additionalProperties": { "enum": ["FRESH", "PARTIAL", "MISSING", "CACHED", "ERROR"] }
+    },
+    "items": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": ["game", "live", "search", "serp"],
+        "properties": {
+          "game": { "type": "object", "required": ["appId", "title", "url", "kind", "score"] },
+          "live": { "type": ["object", "null"] },
+          "search": { "type": ["object", "null"] },
+          "serp": { "type": ["object", "null"] }
+        }
+      }
+    }
+  }
+}
