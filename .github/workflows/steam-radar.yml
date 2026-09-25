@@ -2,6 +2,7 @@ name: Collect Steam radar
 
 on:
   schedule:
+    # GitHub cron uses UTC; collect at minute 17 of every hour.
     - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
