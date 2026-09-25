@@ -1,4 +1,4 @@
-name: Collect Steam radar
+name: Collect Steam radar scheduled
 
 on:
   schedule:
