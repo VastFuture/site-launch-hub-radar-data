@@ -23,6 +23,8 @@ The application supports one active scheduler at a time:
 
 Set the repository variable `RADAR_COLLECTION_MODE=github-actions` to enable the scheduled workflow here. Manual dispatch remains available for recovery and replay.
 
+For runner and upstream canaries before D1 credentials are configured, dispatch with `collect_only=true`. That mode validates a live payload but intentionally skips Git persistence and D1 synchronization.
+
 ## Required GitHub configuration
 
 - Repository variable: `RADAR_COLLECTION_MODE`

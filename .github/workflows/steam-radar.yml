@@ -14,6 +14,11 @@ on:
         required: false
         default: false
         type: boolean
+      collect_only:
+        description: "Canary: collect and validate without committing or synchronizing D1"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -46,6 +51,7 @@ jobs:
           node-version: "22"
 
       - name: Validate configuration
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.collect_only }}
         shell: bash
         run: |
           set -euo pipefail
@@ -62,7 +68,7 @@ jobs:
             --output "$GITHUB_WORKSPACE/radar-payload.json"
 
       - name: Persist collection in this repository
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '' }}
+        if: ${{ (github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '') && (github.event_name != 'workflow_dispatch' || !inputs.collect_only) }}
         working-directory: collector
         shell: bash
         run: |
@@ -72,7 +78,7 @@ jobs:
             --repo "$GITHUB_WORKSPACE"
 
       - name: Commit radar data
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '' }}
+        if: ${{ (github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '') && (github.event_name != 'workflow_dispatch' || !inputs.collect_only) }}
         shell: bash
         run: |
           set -euo pipefail
@@ -88,6 +94,7 @@ jobs:
           fi
 
       - name: Resolve committed payload
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.collect_only }}
         shell: bash
         run: |
           set -euo pipefail
@@ -98,6 +105,7 @@ jobs:
           printf 'RADAR_PAYLOAD_PATH=%s\n' "$GITHUB_WORKSPACE/$payload_path" >> "$GITHUB_ENV"
 
       - name: Synchronize D1 projection
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.collect_only }}
         working-directory: collector
         shell: bash
         run: |
