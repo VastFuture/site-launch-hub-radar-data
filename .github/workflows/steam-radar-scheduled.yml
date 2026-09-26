@@ -20,6 +20,11 @@ on:
         required: false
         default: false
         type: boolean
+      watchdog:
+        description: "Automated recovery dispatch; honor freshness and replay preflight"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -36,6 +41,8 @@ jobs:
     env:
       RADAR_INGEST_URL: ${{ secrets.RADAR_INGEST_URL }}
       RADAR_INGEST_SECRET: ${{ secrets.RADAR_INGEST_SECRET }}
+      RADAR_STATUS_URL: ${{ vars.RADAR_STATUS_URL }}
+      RADAR_MIN_COLLECTION_AGE_MINUTES: ${{ vars.RADAR_MIN_COLLECTION_AGE_MINUTES || '55' }}
       SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
       RADAR_FORCE_ENRICHMENT: ${{ inputs.enrich_search || 'false' }}
 
@@ -44,7 +51,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: ${{ inputs.source_commit_sha || 'main' }}
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Use Node.js 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
@@ -59,8 +66,15 @@ jobs:
           test -n "$RADAR_INGEST_URL"
           test -n "$RADAR_INGEST_SECRET"
 
+      - name: Choose automated action
+        id: preflight
+        if: ${{ github.event_name == 'schedule' || inputs.watchdog }}
+        working-directory: collector
+        shell: bash
+        run: node --experimental-strip-types scripts/radar/preflight.ts
+
       - name: Collect public radar evidence
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '' }}
+        if: ${{ ((github.event_name == 'schedule' || inputs.watchdog) && steps.preflight.outputs.action == 'collect') || (github.event_name == 'workflow_dispatch' && !inputs.watchdog && inputs.source_commit_sha == '') }}
         working-directory: collector
         shell: bash
         run: |
@@ -69,7 +83,7 @@ jobs:
             --output "$GITHUB_WORKSPACE/radar-payload.json"
 
       - name: Persist collection in this repository
-        if: ${{ (github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '') && (github.event_name != 'workflow_dispatch' || !inputs.collect_only) }}
+        if: ${{ !inputs.collect_only && (((github.event_name == 'schedule' || inputs.watchdog) && steps.preflight.outputs.action == 'collect') || (github.event_name == 'workflow_dispatch' && !inputs.watchdog && inputs.source_commit_sha == '')) }}
         working-directory: collector
         shell: bash
         run: |
@@ -79,7 +93,7 @@ jobs:
             --repo "$GITHUB_WORKSPACE"
 
       - name: Commit radar data
-        if: ${{ (github.event_name != 'workflow_dispatch' || inputs.source_commit_sha == '') && (github.event_name != 'workflow_dispatch' || !inputs.collect_only) }}
+        if: ${{ !inputs.collect_only && (((github.event_name == 'schedule' || inputs.watchdog) && steps.preflight.outputs.action == 'collect') || (github.event_name == 'workflow_dispatch' && !inputs.watchdog && inputs.source_commit_sha == '')) }}
         shell: bash
         run: |
           set -euo pipefail
@@ -94,8 +108,21 @@ jobs:
             git push origin HEAD:main
           fi
 
+      - name: Resolve pending Git evidence
+        if: ${{ (github.event_name == 'schedule' || inputs.watchdog) && steps.preflight.outputs.action == 'replay' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_commit="${{ steps.preflight.outputs.manifest_commit }}"
+          payload_path="${{ steps.preflight.outputs.payload_path }}"
+          test -n "$source_commit"
+          test -n "$payload_path"
+          git show "$source_commit:$payload_path" > "$GITHUB_WORKSPACE/radar-payload.json"
+          printf 'RADAR_SOURCE_COMMIT=%s\n' "$source_commit" >> "$GITHUB_ENV"
+          printf 'RADAR_PAYLOAD_PATH=%s\n' "$GITHUB_WORKSPACE/radar-payload.json" >> "$GITHUB_ENV"
+
       - name: Resolve committed payload
-        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.collect_only }}
+        if: ${{ !inputs.collect_only && !((github.event_name == 'schedule' || inputs.watchdog) && (steps.preflight.outputs.action == 'replay' || steps.preflight.outputs.action == 'skip')) }}
         shell: bash
         run: |
           set -euo pipefail
@@ -106,7 +133,7 @@ jobs:
           printf 'RADAR_PAYLOAD_PATH=%s\n' "$GITHUB_WORKSPACE/$payload_path" >> "$GITHUB_ENV"
 
       - name: Synchronize D1 projection
-        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.collect_only }}
+        if: ${{ !inputs.collect_only && !((github.event_name == 'schedule' || inputs.watchdog) && steps.preflight.outputs.action == 'skip') }}
         working-directory: collector
         shell: bash
         run: |
@@ -114,3 +141,17 @@ jobs:
           node --experimental-strip-types scripts/radar/sync-d1.ts \
             --payload "$RADAR_PAYLOAD_PATH" \
             --source-commit "$RADAR_SOURCE_COMMIT"
+
+      - name: Summarize radar decision
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          {
+            echo "### Steam radar run"
+            echo "- Event: ${{ github.event_name }}"
+            echo "- Watchdog: ${{ inputs.watchdog || false }}"
+            echo "- Preflight action: ${{ steps.preflight.outputs.action || 'forced-manual' }}"
+            echo "- Preflight reason: ${{ steps.preflight.outputs.reason || 'manual' }}"
+            echo "- Drift: ${{ steps.preflight.outputs.drift || false }}"
+            echo "- Evidence commit: ${{ steps.preflight.outputs.manifest_commit || 'resolved-after-collection' }}"
+          } >> "$GITHUB_STEP_SUMMARY"

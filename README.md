@@ -17,17 +17,21 @@ Only public, sanitized evidence belongs here. Never commit credentials, cookies,
 
 The application supports one active scheduler at a time:
 
-- `github-actions`: this public repository collects on GitHub-hosted runners and imports the committed payload into Cloudflare D1.
+- `github-actions`: this public repository collects on GitHub-hosted runners and imports the committed payload into Cloudflare D1. A Cloudflare Worker may read D1 status and dispatch this same workflow as a lightweight watchdog; it does not collect Steam data.
 - `cloudflare`: a Cloudflare Cron Worker calls the protected Pages collection endpoint; this repository's scheduled job skips collection.
 - `local`: no remote scheduler is active; an operator runs the CLI in the application repository.
 
 Set the repository variable `RADAR_COLLECTION_MODE=github-actions` to enable the scheduled workflow here. Manual dispatch remains available for recovery and replay.
 
+The watchdog uses `watchdog=true`, which enables freshness preflight and automatic Git evidence replay. Ordinary manual dispatch remains forced and does not skip because data is fresh.
+
 For runner and upstream canaries before D1 credentials are configured, dispatch with `collect_only=true`. That mode validates a live payload but intentionally skips Git persistence and D1 synchronization.
 
 ## Required GitHub configuration
 
-- Repository variable: `RADAR_COLLECTION_MODE`
+- Repository variable: `RADAR_COLLECTION_MODE=github-actions`
+- Repository variable: `RADAR_STATUS_URL=https://site-launch-hub.pages.dev/api/radar/status`
+- Repository variable: `RADAR_MIN_COLLECTION_AGE_MINUTES=55`
 - Actions secret: `RADAR_INGEST_URL`
 - Actions secret: `RADAR_INGEST_SECRET`
 - Optional Actions secret: `SERPER_API_KEY`
