@@ -2,6 +2,8 @@
 
 Public, versioned Steam opportunity evidence and the collector that produces it.
 
+The repository also hosts low-privilege public-runner schedules for Site Launch Hub. These workflows may call protected application endpoints with encrypted GitHub Actions secrets, but must not contain tenant data or Cloudflare account credentials.
+
 ## Repository contents
 
 - `collector/`: a published mirror of the collector source from `VastNext/site-launch-hub`
@@ -35,6 +37,13 @@ For runner and upstream canaries before D1 credentials are configured, dispatch 
 - Actions secret: `RADAR_INGEST_URL`
 - Actions secret: `RADAR_INGEST_SECRET`
 - Optional Actions secret: `SERPER_API_KEY`
+
+Backlink AI maintenance additionally requires:
+
+- Repository variable: `BACKLINK_MAINTENANCE_URL=https://site-launch-hub.pages.dev/api/backlinks/maintenance`
+- Actions secret: `BACKLINK_MAINTENANCE_SECRET`, matching the Cloudflare Pages secret of the same name
+
+`.github/workflows/backlink-maintenance.yml` calls the protected endpoint every six hours and on manual dispatch. It only needs `contents: read`; it does not receive a Cloudflare API token, D1 credentials, cookies, sessions, or third-party account passwords.
 
 The workflow uses the repository-scoped `GITHUB_TOKEN` to commit data. It does not need a deploy key or access to the private application repository.
 

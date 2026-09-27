@@ -1,0 +1,52 @@
+name: Maintain backlink campaigns
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backlink-maintenance
+  cancel-in-progress: false
+
+jobs:
+  maintain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Validate maintenance configuration
+        env:
+          MAINTENANCE_URL: ${{ vars.BACKLINK_MAINTENANCE_URL }}
+          MAINTENANCE_SECRET: ${{ secrets.BACKLINK_MAINTENANCE_SECRET }}
+        run: |
+          test -n "$MAINTENANCE_URL"
+          test -n "$MAINTENANCE_SECRET"
+
+      - name: Trigger evidence-grounded maintenance
+        env:
+          MAINTENANCE_URL: ${{ vars.BACKLINK_MAINTENANCE_URL }}
+          MAINTENANCE_SECRET: ${{ secrets.BACKLINK_MAINTENANCE_SECRET }}
+        run: |
+          curl --fail-with-body --silent --show-error \
+            --retry 3 --retry-all-errors \
+            --request POST \
+            --header "Authorization: Bearer $MAINTENANCE_SECRET" \
+            --header "Content-Type: application/json" \
+            "$MAINTENANCE_URL" | tee maintenance-result.json
+
+      - name: Summarize maintenance result
+        if: ${{ always() }}
+        run: |
+          {
+            echo "### Backlink maintenance"
+            echo "- Event: ${{ github.event_name }}"
+            if test -s maintenance-result.json; then
+              echo '- Endpoint response:'
+              echo '```json'
+              cat maintenance-result.json
+              echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
