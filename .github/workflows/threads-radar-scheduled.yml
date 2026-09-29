@@ -1,0 +1,100 @@
+name: Collect Threads radar scheduled
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+    inputs:
+      collect_only:
+        description: "Canary: collect without synchronizing D1"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: threads-radar-collector
+  cancel-in-progress: false
+
+jobs:
+  collect-and-sync:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.THREADS_RADAR_COLLECTION_MODE == 'github-actions') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      THREADS_RADAR_INGEST_URL: ${{ secrets.THREADS_RADAR_INGEST_URL }}
+      THREADS_RADAR_INGEST_SECRET: ${{ secrets.THREADS_RADAR_INGEST_SECRET }}
+      RADAR_SERP_TYPES: "base,profile"
+
+    steps:
+      - name: Check out public collector and data
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+
+      - name: Validate configuration
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.collect_only }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$THREADS_RADAR_INGEST_URL"
+          test -n "$THREADS_RADAR_INGEST_SECRET"
+
+      - name: Collect Threads radar data
+        working-directory: collector
+        shell: bash
+        env:
+          THREADS_RADAR_KEYWORDS_FILE: "data/threads-radar/keywords.txt"
+          THREADS_RADAR_BLOCKLIST_FILE: "data/threads-radar/blocklist.txt"
+        run: |
+          set -euo pipefail
+          node --experimental-strip-types scripts/radar/threads/collector.ts \
+            --output "$GITHUB_WORKSPACE/threads-radar-payload.json" \
+            --collector-version "${GITHUB_SHA:-local}"
+
+      - name: Validate health and item count
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'EOF'
+          import { readFileSync } from "node:fs";
+
+          const path = `${process.env.GITHUB_WORKSPACE}/threads-radar-payload.json`;
+          const payload = JSON.parse(readFileSync(path, "utf8"));
+          const posts = payload.items.map((item) => item.post);
+          const zeroInteractionPosts = posts.filter((post) =>
+            post.likeCount + post.replyCount + post.repostCount + post.quoteCount === 0
+          ).length;
+
+          console.log(
+            `Health: ${payload.channelHealth?.healthy}, Posts: ${posts.length}, Zero-interaction posts: ${zeroInteractionPosts}`,
+          );
+          if (payload.channelHealth?.healthy !== true) {
+            throw new Error("Collection is not healthy");
+          }
+          if (posts.length < 5) {
+            throw new Error("Collected fewer than 5 posts");
+          }
+          if (zeroInteractionPosts !== 0) {
+            throw new Error("Payload contains zero-interaction posts");
+          }
+          EOF
+
+      - name: Synchronize D1 projection
+        if: ${{ github.event_name == 'schedule' || !inputs.collect_only }}
+        working-directory: collector
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Use payload SHA-256 as source identity
+          PAYLOAD_SHA256=$(sha256sum "$GITHUB_WORKSPACE/threads-radar-payload.json" | awk '{print $1}')
+          node --experimental-strip-types scripts/radar/threads/sync-d1.ts \
+            --payload "$GITHUB_WORKSPACE/threads-radar-payload.json" \
+            --source-commit "$PAYLOAD_SHA256"

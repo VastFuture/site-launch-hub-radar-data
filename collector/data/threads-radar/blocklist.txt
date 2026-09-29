@@ -1,0 +1,29 @@
+# Threads AI 爆款雷达屏蔽词配置
+# 格式：每行一个屏蔽词，注释以 # 开头，空行忽略
+# 屏蔽词匹配帖子正文（不区分大小写，包含即屏蔽）
+
+# ──────────────────────────── 广告与促销 ────────────────────────────
+giveaway
+follow me
+follow back
+like and share
+subscribe now
+dm me
+check my bio
+link in bio
+
+# ──────────────────────────── 垃圾内容与低质 ────────────────────────────
+make money fast
+earn passive income
+financial freedom
+crypto pump
+nft drop
+airdrop
+free followers
+get rich quick
+
+# ──────────────────────────── 不相关话题 ────────────────────────────
+sports betting
+casino bonus
+weight loss pill
+diet supplement

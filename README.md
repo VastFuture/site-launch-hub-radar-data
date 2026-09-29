@@ -1,6 +1,6 @@
 # Site Launch Hub Radar Data
 
-Public, versioned Steam opportunity evidence and the collector that produces it.
+Public Steam opportunity evidence plus the Steam and Threads collectors that produce the production radar data.
 
 The repository also hosts low-privilege public-runner schedules for Site Launch Hub. These workflows may call protected application endpoints with encrypted GitHub Actions secrets, but must not contain tenant data or Cloudflare account credentials.
 
@@ -14,16 +14,17 @@ The repository also hosts low-privilege public-runner schedules for Site Launch 
 - `schema/`: public payload schema
 
 Only public, sanitized evidence belongs here. Never commit credentials, cookies, user or tenant data, watchlists, sessions, Cloudflare D1 files, or local SQLite databases.
+Steam payloads are committed and archived to this repository as Git evidence. Threads payloads, which may contain full post bodies, are strictly isolated to runner temporary storage; they are never committed to the repository.
 
 ## Collection modes
 
 The application supports one active scheduler at a time:
 
-- `github-actions`: this public repository collects on GitHub-hosted runners and imports the committed payload into Cloudflare D1. A Cloudflare Worker may read D1 status and dispatch this same workflow as a lightweight watchdog; it does not collect Steam data.
+- `github-actions`: this public repository collects on GitHub-hosted runners and imports the payload into Cloudflare D1. A Cloudflare Worker may read D1 status and dispatch this same workflow as a lightweight watchdog; it does not collect Steam data.
 - `cloudflare`: a Cloudflare Cron Worker calls the protected Pages collection endpoint; this repository's scheduled job skips collection.
 - `local`: no remote scheduler is active; an operator runs the CLI in the application repository.
 
-Set the repository variable `RADAR_COLLECTION_MODE=github-actions` to enable the scheduled workflow here. Manual dispatch remains available for recovery and replay.
+Set the repository variable `RADAR_COLLECTION_MODE=github-actions` to enable the Steam scheduled workflow here, and `THREADS_RADAR_COLLECTION_MODE=github-actions` to enable the Threads scheduled workflow. Manual dispatch remains available for recovery and replay.
 
 The watchdog uses `watchdog=true`, which enables freshness preflight and automatic Git evidence replay. Ordinary manual dispatch remains forced and does not skip because data is fresh.
 
@@ -32,10 +33,13 @@ For runner and upstream canaries before D1 credentials are configured, dispatch 
 ## Required GitHub configuration
 
 - Repository variable: `RADAR_COLLECTION_MODE=github-actions`
+- Repository variable: `THREADS_RADAR_COLLECTION_MODE=github-actions`
 - Repository variable: `RADAR_STATUS_URL=https://site-launch-hub.pages.dev/api/radar/status`
 - Repository variable: `RADAR_MIN_COLLECTION_AGE_MINUTES=55`
 - Actions secret: `RADAR_INGEST_URL`
 - Actions secret: `RADAR_INGEST_SECRET`
+- Actions secret: `THREADS_RADAR_INGEST_URL`
+- Actions secret: `THREADS_RADAR_INGEST_SECRET`
 - Optional Actions secret: `SERPER_API_KEY`
 
 Backlink AI maintenance additionally requires:
@@ -59,5 +63,19 @@ node --experimental-strip-types collector/scripts/radar/persist-data.ts \
   --payload /tmp/radar-payload.json \
   --repo .
 ```
+
+For Threads:
+```bash
+node --experimental-strip-types collector/scripts/radar/threads/collector.ts \
+  --keywords-file collector/data/threads-radar/keywords.txt \
+  --blocklist-file collector/data/threads-radar/blocklist.txt \
+  --output /tmp/threads-radar-payload.json
+
+node --experimental-strip-types collector/scripts/radar/threads/sync-d1.ts \
+  --payload /tmp/threads-radar-payload.json \
+  --source-commit "<payload-sha256>"
+```
+
+The Threads collector uses Node 22 native `fetch` and runs via direct connection on public runners. Note that native `fetch` does not automatically support `HTTP_PROXY` or `HTTPS_PROXY` environment variables. If you need proxy support, you must implement a custom dispatcher; do not commit proxy credentials or expose them as secrets.
 
 The `collector/` tree is generated from the application repository. Changes should be made there first, then published with `pnpm radar:kit:export -- --repo <path>`.
