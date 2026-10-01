@@ -1,10 +1,15 @@
-name: Collect Threads radar scheduled
+name: Threads radar scheduled
+run-name: Threads radar ${{ inputs.dispatch_id || github.run_id }}
 
 on:
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
     inputs:
+      dispatch_id:
+        description: "Optional UUID to stamp a manual run; omit to use the schedule timestamp"
+        required: false
+        type: string
       collect_only:
         description: "Canary: collect without synchronizing D1"
         required: false
@@ -13,6 +18,9 @@ on:
 
 permissions:
   contents: read
+
+env:
+  THREADS_RADAR_DISPATCH_CONTRACT: manual-v1
 
 concurrency:
   group: threads-radar-collector
@@ -53,11 +61,17 @@ jobs:
         env:
           THREADS_RADAR_KEYWORDS_FILE: "data/threads-radar/keywords.txt"
           THREADS_RADAR_BLOCKLIST_FILE: "data/threads-radar/blocklist.txt"
+          THREADS_RADAR_DISPATCH_ID: ${{ inputs.dispatch_id }}
         run: |
           set -euo pipefail
+          DISPATCH_ARGS=()
+          if [ -n "$THREADS_RADAR_DISPATCH_ID" ]; then
+            DISPATCH_ARGS=(--dispatch-id "$THREADS_RADAR_DISPATCH_ID")
+          fi
           node --experimental-strip-types scripts/radar/threads/collector.ts \
             --output "$GITHUB_WORKSPACE/threads-radar-payload.json" \
-            --collector-version "${GITHUB_SHA:-local}"
+            --collector-version "${GITHUB_SHA:-local}" \
+            "${DISPATCH_ARGS[@]}"
 
       - name: Validate health and item count
         shell: bash
@@ -85,6 +99,29 @@ jobs:
           if (zeroInteractionPosts !== 0) {
             throw new Error("Payload contains zero-interaction posts");
           }
+          EOF
+
+      - name: Validate runId
+        shell: bash
+        env:
+          THREADS_RADAR_DISPATCH_ID: ${{ inputs.dispatch_id }}
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'EOF'
+          import { readFileSync } from "node:fs";
+
+          const path = `${process.env.GITHUB_WORKSPACE}/threads-radar-payload.json`;
+          const payload = JSON.parse(readFileSync(path, "utf8"));
+          const dispatchId = process.env.THREADS_RADAR_DISPATCH_ID;
+          const expected = dispatchId
+            ? `threads-radar:manual:${dispatchId}`
+            : `threads-radar:${payload.scheduledAt}`;
+
+          if (payload.runId !== expected) {
+            throw new Error(`runId mismatch: expected ${expected}, got ${payload.runId}`);
+          }
+
+          console.log(`runId OK: ${payload.runId}`);
           EOF
 
       - name: Synchronize D1 projection

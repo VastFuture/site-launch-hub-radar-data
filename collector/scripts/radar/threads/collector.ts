@@ -58,6 +58,7 @@ export interface CollectThreadsRadarOptions {
   variants?: string[];
   scheduledAt?: Date;
   collectorVersion?: string;
+  dispatchId?: string;
   retries?: number;
   timeoutMs?: number;
   jitterMinMs?: number;
@@ -66,6 +67,23 @@ export interface CollectThreadsRadarOptions {
   userAgent?: string;
   proxy?: string;
   dispatcher?: unknown;
+}
+
+const DISPATCH_ID_UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+export function assertDispatchId(value: string): asserts value is string {
+  if (!DISPATCH_ID_UUID_RE.test(value)) {
+    throw new Error(`--dispatch-id 必须是严格 UUID，收到: ${value}`);
+  }
+}
+
+export function buildRunId(dispatchId?: string, scheduledAt?: Date): string {
+  if (dispatchId) {
+    assertDispatchId(dispatchId);
+    return `threads-radar:manual:${dispatchId}`;
+  }
+  return `threads-radar:${(scheduledAt ?? new Date()).toISOString()}`;
 }
 
 export function classifyError(
@@ -675,7 +693,7 @@ export async function collectThreadsRadarData(
   };
 
   const collectedAt = new Date();
-  const runId = `threads-radar:${scheduledAt.toISOString()}`;
+  const runId = buildRunId(opts.dispatchId, scheduledAt);
 
   const payload: ThreadsRadarCollectionPayload = {
     schemaVersion: THREADS_RADAR_DATA_SCHEMA_VERSION,
@@ -773,12 +791,18 @@ async function main(): Promise<void> {
   const collectorVersion =
     args.get("collector-version") ?? process.env.GITHUB_SHA ?? "local";
 
+  const dispatchIdRaw = args.get("dispatch-id");
+  if (dispatchIdRaw !== undefined) {
+    assertDispatchId(dispatchIdRaw);
+  }
+
   const payload = await collectThreadsRadarData({
     keywords,
     blocklist,
     variants,
     scheduledAt,
     collectorVersion,
+    dispatchId: dispatchIdRaw,
     skipJitter: args.get("skip-jitter") === "true",
   });
 

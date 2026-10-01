@@ -3,11 +3,20 @@
  * 契约规范：
  * - schemaVersion: threads-radar-data-v1
  * - runId: threads-radar:<ISO-8601 timestamp>，允许同一小时内安全重跑
+ * - 手动派发契约标记 manual-v1: runId 为 threads-radar:manual:<UUID>
  * - 指标: 有限非负数字 (finite nonnegative)
  * - URL: 仅允许 HTTP(S)
  * - post code: 唯一无重复
  * - items: 数组有上限
  */
+
+/** CONTRACT_MARKER: manual-v1 */
+export const THREADS_RADAR_MANUAL_MARKER = "manual-v1" as const;
+
+const SCHEDULED_RUN_ID_RE =
+  /^threads-radar:\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+const MANUAL_RUN_ID_RE =
+  /^threads-radar:manual:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export type ThreadsRadarRelevance = "relevant" | "blocked" | "offtopic";
 
@@ -292,8 +301,10 @@ export function validateThreadsRadarCollectionPayload(value: unknown): ThreadsRa
   }
 
   assertString(value.runId, "runId", 100);
-  if (!/^threads-radar:\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value.runId)) {
-    throw new Error("runId 必须使用 threads-radar:<ISO-8601 timestamp> 格式");
+  if (!SCHEDULED_RUN_ID_RE.test(value.runId) && !MANUAL_RUN_ID_RE.test(value.runId)) {
+    throw new Error(
+      "runId 必须使用 threads-radar:<ISO-8601 timestamp> 或 threads-radar:manual:<UUID> 格式",
+    );
   }
 
   assertIsoDate(value.scheduledAt, "scheduledAt");

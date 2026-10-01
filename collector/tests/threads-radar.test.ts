@@ -1,14 +1,26 @@
 import { test } from "node:test";
 import assert from "node:assert";
-import { validateThreadsRadarCollectionPayload } from "../server/threads-radar-contract.ts";
-import { parseKeywordsText } from "../scripts/radar/threads/collector.ts";
-import { syncThreadsRadarToD1 } from "../scripts/radar/threads/sync-d1.ts";
+import { readFileSync } from "node:fs";
 import { writeFile, unlink } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import {
+  THREADS_RADAR_MANUAL_MARKER,
+  validateThreadsRadarCollectionPayload,
+} from "../server/threads-radar-contract.ts";
+import {
+  collectThreadsRadarData,
+  parseArgs,
+  parseKeywordsText,
+} from "../scripts/radar/threads/collector.ts";
+import { syncThreadsRadarToD1 } from "../scripts/radar/threads/sync-d1.ts";
 
-test("Contract payload validation", () => {
-  const validPayload = {
+const TEST_UUID = "123e4567-e89b-12d3-a456-426614174000";
+
+function makePayload(runId: string) {
+  return {
     schemaVersion: "threads-radar-data-v1",
-    runId: "threads-radar:2026-09-29T00:00:00.000Z",
+    runId,
     scheduledAt: "2026-09-29T00:00:00.000Z",
     collectedAt: "2026-09-29T00:00:00.000Z",
     collectorVersion: "test",
@@ -47,10 +59,32 @@ test("Contract payload validation", () => {
       }
     ]
   };
+}
 
-  const validated = validateThreadsRadarCollectionPayload(validPayload);
+test("Contract payload validation", () => {
+  const validated = validateThreadsRadarCollectionPayload(
+    makePayload("threads-radar:2026-09-29T00:00:00.000Z"),
+  );
   assert.strictEqual(validated.schemaVersion, "threads-radar-data-v1");
   assert.strictEqual(validated.items.length, 1);
+});
+
+test("Contract accepts manual-v1 marker runId", () => {
+  assert.strictEqual(THREADS_RADAR_MANUAL_MARKER, "manual-v1");
+  const validated = validateThreadsRadarCollectionPayload(
+    makePayload(`threads-radar:manual:${TEST_UUID}`),
+  );
+  assert.strictEqual(validated.runId, `threads-radar:manual:${TEST_UUID}`);
+});
+
+test("Contract rejects malformed manual runId", () => {
+  assert.throws(
+    () =>
+      validateThreadsRadarCollectionPayload(
+        makePayload("threads-radar:manual:not-a-uuid"),
+      ),
+    /runId/,
+  );
 });
 
 test("Keyword parsing and request pressure calculation", () => {
@@ -69,21 +103,84 @@ keyword2
   assert.strictEqual(parsed[2].keyword, "keyword3");
 });
 
+test("parseArgs captures --dispatch-id", () => {
+  const args = parseArgs(["--dispatch-id", TEST_UUID]);
+  assert.strictEqual(args.get("dispatch-id"), TEST_UUID);
+});
+
+const emptyFetcher = async () => new Response("", { status: 200 });
+
+const collectOptions = {
+  keywords: ["ai"],
+  blocklist: [],
+  variants: ["base"],
+  scheduledAt: new Date("2026-09-29T00:00:00.000Z"),
+  collectorVersion: "test",
+  skipJitter: true,
+};
+
+test("collectThreadsRadarData emits manual runId for dispatchId", async () => {
+  const payload = await collectThreadsRadarData(emptyFetcher, {
+    ...collectOptions,
+    dispatchId: TEST_UUID,
+  });
+  assert.strictEqual(payload.runId, `threads-radar:manual:${TEST_UUID}`);
+});
+
+test("collectThreadsRadarData keeps ISO runId without dispatchId", async () => {
+  const payload = await collectThreadsRadarData(emptyFetcher, collectOptions);
+  assert.strictEqual(payload.runId, "threads-radar:2026-09-29T00:00:00.000Z");
+});
+
+test("collectThreadsRadarData rejects invalid dispatchId", async () => {
+  await assert.rejects(
+    async () =>
+      collectThreadsRadarData(emptyFetcher, {
+        ...collectOptions,
+        dispatchId: "not-a-uuid",
+      }),
+    /UUID/,
+  );
+});
+
+test("Workflow wires manual dispatch contract", () => {
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  const workflow = readFileSync(
+    path.resolve(here, "../../.github/workflows/threads-radar-scheduled.yml"),
+    "utf8",
+  );
+
+  assert.ok(
+    workflow.includes("run-name: Threads radar ${{ inputs.dispatch_id || github.run_id }}"),
+    "run name must fall back to github.run_id when dispatch_id is absent",
+  );
+  assert.ok(
+    workflow.includes("dispatch_id:"),
+    "workflow_dispatch must expose an optional dispatch_id input",
+  );
+  assert.ok(
+    workflow.includes("THREADS_RADAR_DISPATCH_CONTRACT: manual-v1"),
+    "workflow must expose the immutable manual-v1 contract marker",
+  );
+  assert.ok(
+    workflow.includes("--dispatch-id"),
+    "collect step must forward dispatch_id to the collector CLI",
+  );
+  assert.ok(
+    workflow.includes("threads-radar:manual:"),
+    "sync step must assert the manual runId before D1 sync",
+  );
+  assert.ok(
+    workflow.includes("collect_only"),
+    "collect_only must still gate the D1 sync step",
+  );
+});
+
 test("Sync headers", async () => {
   const payloadPath = "/tmp/test-payload.json";
-  const rawPayload = JSON.stringify({
-    schemaVersion: "threads-radar-data-v1",
-    runId: "threads-radar:2026-09-29T00:00:00.000Z",
-    scheduledAt: "2026-09-29T00:00:00.000Z",
-    collectedAt: "2026-09-29T00:00:00.000Z",
-    collectorVersion: "test",
-    source: {
-      name: "Threads Public Search",
-      url: "https://www.threads.com",
-      scope: "threads-search-radar",
-    },
-    items: []
-  });
+  const rawPayload = JSON.stringify(
+    makePayload("threads-radar:2026-09-29T00:00:00.000Z"),
+  );
   await writeFile(payloadPath, rawPayload, "utf8");
 
   try {
