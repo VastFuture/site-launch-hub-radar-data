@@ -1,11 +1,11 @@
 {
   "schemaVersion": "steam-radar-data-v1",
-  "runId": "steam-radar:2026-10-15T23",
-  "scheduledAt": "2026-10-15T23:19:43.452Z",
-  "collectedAt": "2026-10-15T23:19:43.452Z",
-  "collectorVersion": "da0bd9e9c143e929395a95170500b0fba850d198",
-  "payloadPath": "steam/runs/2026-10-15T23-19-43Z.json",
-  "payloadSha256": "3969b36d007146d4436414785bdc19fa43e2bd40fbb9ebd85362887242780a87",
+  "runId": "steam-radar:2026-10-16T01",
+  "scheduledAt": "2026-10-16T01:41:15.666Z",
+  "collectedAt": "2026-10-16T01:41:15.667Z",
+  "collectorVersion": "7d1f534cc4efe7c48ea1a57b0da545344ccb29c3",
+  "payloadPath": "steam/runs/2026-10-16T01-41-15Z.json",
+  "payloadSha256": "d2f3605c5c4a4f9bbcf5f90e2be5577943f728227859cb329dcda45993a59e7e",
   "gameCount": 50,
   "snapshotCount": 15,
   "providerStatus": {
@@ -14,5 +14,5 @@
     "googleSuggest": "CACHED",
     "serp": "CACHED"
   },
-  "generatedAt": "2026-10-15T23:19:43.452Z"
+  "generatedAt": "2026-10-16T01:41:15.667Z"
 }
