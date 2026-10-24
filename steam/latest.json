@@ -1,9 +1,9 @@
 {
   "schemaVersion": "steam-radar-data-v1",
-  "runId": "steam-radar:2026-10-24T19",
-  "scheduledAt": "2026-10-24T19:03:30.756Z",
-  "collectedAt": "2026-10-24T19:03:30.756Z",
-  "collectorVersion": "69b7d9017ba58cb79d40f1f03a5d4863a36cb54b",
+  "runId": "steam-radar:2026-10-24T21",
+  "scheduledAt": "2026-10-24T21:56:38.648Z",
+  "collectedAt": "2026-10-24T21:56:38.648Z",
+  "collectorVersion": "2498f9802024b713d42d6f5f51b2b000b1c022e6",
   "source": {
     "name": "Steam Search",
     "url": "https://store.steampowered.com/search/results/?query&start=0&count=50&sort_by=Released_DESC&supportedlang=english&infinite=1&json=1",
@@ -16,6 +16,906 @@
     "serp": "CACHED"
   },
   "items": [
+    {
+      "game": {
+        "appId": "3330380",
+        "title": "Ad Nauseam - The Wrong Side",
+        "url": "https://store.steampowered.com/app/3330380/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3330380/930f55153bd9a52f22a23bd284f1ce4ee39bfd7d/capsule_231x87.jpg?t=1792878250",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "tagIds": [
+          1721,
+          3799,
+          44868,
+          7208,
+          4947,
+          21,
+          4085
+        ],
+        "kind": "game",
+        "priceLabel": "$6.59",
+        "isFree": false,
+        "discountPercent": 40,
+        "reviewLabel": null,
+        "score": 58,
+        "signals": [
+          "24 小时发布窗口",
+          "首发折扣 40%"
+        ],
+        "keywordIdeas": [
+          "Ad Nauseam - The Wrong Side wiki",
+          "Ad Nauseam - The Wrong Side guide",
+          "Ad Nauseam - The Wrong Side walkthrough",
+          "Ad Nauseam - The Wrong Side best build",
+          "Ad Nauseam - The Wrong Side tier list",
+          "Ad Nauseam - The Wrong Side map",
+          "Ad Nauseam - The Wrong Side boss guide",
+          "Ad Nauseam - The Wrong Side items",
+          "Ad Nauseam - The Wrong Side weapons",
+          "Ad Nauseam - The Wrong Side codes",
+          "Ad Nauseam - The Wrong Side achievements",
+          "Ad Nauseam - The Wrong Side calculator"
+        ],
+        "currentPlayers": 0,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 40,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "watch",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": {
+        "currentPlayers": 0,
+        "reviewTotal": null,
+        "reviewPositive": null,
+        "reviewNegative": null
+      },
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5336880",
+        "title": "This Is the Peace Soundtrack",
+        "url": "https://store.steampowered.com/app/5336880/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5336880/488c084e3bb7c8a30f3ab89a83be4f084b4361c8/capsule_231x87.jpg?t=1792877514",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [],
+        "tagIds": [],
+        "kind": "soundtrack",
+        "priceLabel": "$7.99",
+        "isFree": false,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 12,
+        "signals": [
+          "24 小时发布窗口"
+        ],
+        "keywordIdeas": [
+          "This Is the Peace Soundtrack wiki",
+          "This Is the Peace Soundtrack guide",
+          "This Is the Peace Soundtrack walkthrough",
+          "This Is the Peace Soundtrack best build",
+          "This Is the Peace Soundtrack tier list",
+          "This Is the Peace Soundtrack map",
+          "This Is the Peace Soundtrack boss guide",
+          "This Is the Peace Soundtrack items",
+          "This Is the Peace Soundtrack weapons",
+          "This Is the Peace Soundtrack codes",
+          "This Is the Peace Soundtrack achievements",
+          "This Is the Peace Soundtrack calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "skip",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "1930320",
+        "title": "Iron Online",
+        "url": "https://store.steampowered.com/app/1930320/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1930320/86d2d1575615f732f815308a70f5927171736f59/capsule_231x87.jpg?t=1792877569",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win"
+        ],
+        "tagIds": [
+          19,
+          597,
+          9,
+          176981,
+          128,
+          1754,
+          1718
+        ],
+        "kind": "game",
+        "priceLabel": "Free",
+        "isFree": true,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 58,
+        "signals": [
+          "24 小时发布窗口",
+          "免费游玩"
+        ],
+        "keywordIdeas": [
+          "Iron Online wiki",
+          "Iron Online guide",
+          "Iron Online walkthrough",
+          "Iron Online best build",
+          "Iron Online tier list",
+          "Iron Online map",
+          "Iron Online boss guide",
+          "Iron Online items",
+          "Iron Online weapons",
+          "Iron Online codes",
+          "Iron Online achievements",
+          "Iron Online calculator"
+        ],
+        "currentPlayers": 1,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 40,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "watch",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": {
+        "currentPlayers": 1,
+        "reviewTotal": null,
+        "reviewPositive": null,
+        "reviewNegative": null
+      },
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5423540",
+        "title": "BALLISTIC Demo",
+        "url": "https://store.steampowered.com/app/5423540/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5423540/97a104e9f04550906b199e2b167493abd3b62957/capsule_231x87.jpg?t=1792877318",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win",
+          "linux"
+        ],
+        "tagIds": [
+          19,
+          492,
+          599,
+          701
+        ],
+        "kind": "demo",
+        "priceLabel": "Free",
+        "isFree": true,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 42,
+        "signals": [
+          "24 小时发布窗口",
+          "免费游玩"
+        ],
+        "keywordIdeas": [
+          "BALLISTIC Demo wiki",
+          "BALLISTIC Demo guide",
+          "BALLISTIC Demo walkthrough",
+          "BALLISTIC Demo best build",
+          "BALLISTIC Demo tier list",
+          "BALLISTIC Demo map",
+          "BALLISTIC Demo boss guide",
+          "BALLISTIC Demo items",
+          "BALLISTIC Demo weapons",
+          "BALLISTIC Demo codes",
+          "BALLISTIC Demo achievements",
+          "BALLISTIC Demo calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "skip",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "4924290",
+        "title": "Fire Bug",
+        "url": "https://store.steampowered.com/app/4924290/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4924290/96304aae2a5b982b29b7796140d4f6a918593005/capsule_231x87.jpg?t=1792876542",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win"
+        ],
+        "tagIds": [
+          560542,
+          19,
+          597,
+          6730,
+          1773,
+          4726,
+          3871
+        ],
+        "kind": "game",
+        "priceLabel": "$1.79",
+        "isFree": false,
+        "discountPercent": 40,
+        "reviewLabel": null,
+        "score": 58,
+        "signals": [
+          "24 小时发布窗口",
+          "首发折扣 40%"
+        ],
+        "keywordIdeas": [
+          "Fire Bug wiki",
+          "Fire Bug guide",
+          "Fire Bug walkthrough",
+          "Fire Bug best build",
+          "Fire Bug tier list",
+          "Fire Bug map",
+          "Fire Bug boss guide",
+          "Fire Bug items",
+          "Fire Bug weapons",
+          "Fire Bug codes",
+          "Fire Bug achievements",
+          "Fire Bug calculator"
+        ],
+        "currentPlayers": 0,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 40,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "watch",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": {
+        "currentPlayers": 0,
+        "reviewTotal": null,
+        "reviewPositive": null,
+        "reviewNegative": null
+      },
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5394470",
+        "title": "Retro Empire Demo",
+        "url": "https://store.steampowered.com/app/5394470/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5394470/5399721beab502aa61e1ae347b221335afbae928/capsule_231x87.jpg?t=1792876202",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win",
+          "linux"
+        ],
+        "tagIds": [
+          9,
+          492,
+          599
+        ],
+        "kind": "demo",
+        "priceLabel": "Free",
+        "isFree": true,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 42,
+        "signals": [
+          "24 小时发布窗口",
+          "免费游玩"
+        ],
+        "keywordIdeas": [
+          "Retro Empire Demo wiki",
+          "Retro Empire Demo guide",
+          "Retro Empire Demo walkthrough",
+          "Retro Empire Demo best build",
+          "Retro Empire Demo tier list",
+          "Retro Empire Demo map",
+          "Retro Empire Demo boss guide",
+          "Retro Empire Demo items",
+          "Retro Empire Demo weapons",
+          "Retro Empire Demo codes",
+          "Retro Empire Demo achievements",
+          "Retro Empire Demo calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "skip",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5420660",
+        "title": "The Inkwell Demo",
+        "url": "https://store.steampowered.com/app/5420660/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5420660/c3883f5d0bc892d392e562ecc5bb5ac55124983a/capsule_231x87.jpg?t=1792875571",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win"
+        ],
+        "tagIds": [
+          21,
+          492
+        ],
+        "kind": "demo",
+        "priceLabel": "Free",
+        "isFree": true,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 42,
+        "signals": [
+          "24 小时发布窗口",
+          "免费游玩"
+        ],
+        "keywordIdeas": [
+          "The Inkwell Demo wiki",
+          "The Inkwell Demo guide",
+          "The Inkwell Demo walkthrough",
+          "The Inkwell Demo best build",
+          "The Inkwell Demo tier list",
+          "The Inkwell Demo map",
+          "The Inkwell Demo boss guide",
+          "The Inkwell Demo items",
+          "The Inkwell Demo weapons",
+          "The Inkwell Demo codes",
+          "The Inkwell Demo achievements",
+          "The Inkwell Demo calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "skip",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5419560",
+        "title": "CENTAVO Demo",
+        "url": "https://store.steampowered.com/app/5419560/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5419560/6a49ec934d5280752a1997f3be563927b90654b9/capsule_231x87.jpg?t=1792875062",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win"
+        ],
+        "tagIds": [
+          599
+        ],
+        "kind": "demo",
+        "priceLabel": "Free",
+        "isFree": true,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 42,
+        "signals": [
+          "24 小时发布窗口",
+          "免费游玩"
+        ],
+        "keywordIdeas": [
+          "CENTAVO Demo wiki",
+          "CENTAVO Demo guide",
+          "CENTAVO Demo walkthrough",
+          "CENTAVO Demo best build",
+          "CENTAVO Demo tier list",
+          "CENTAVO Demo map",
+          "CENTAVO Demo boss guide",
+          "CENTAVO Demo items",
+          "CENTAVO Demo weapons",
+          "CENTAVO Demo codes",
+          "CENTAVO Demo achievements",
+          "CENTAVO Demo calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "skip",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5105260",
+        "title": "AVXRPG",
+        "url": "https://store.steampowered.com/app/5105260/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5105260/77f51079016bf8085a5ea144e2e641b802c4329a/capsule_231x87.jpg?t=1792872644",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win"
+        ],
+        "tagIds": [
+          19,
+          21,
+          122,
+          4231,
+          597,
+          1720,
+          3871
+        ],
+        "kind": "game",
+        "priceLabel": "$4.24",
+        "isFree": false,
+        "discountPercent": 15,
+        "reviewLabel": null,
+        "score": 54,
+        "signals": [
+          "24 小时发布窗口",
+          "首发折扣 15%"
+        ],
+        "keywordIdeas": [
+          "AVXRPG wiki",
+          "AVXRPG guide",
+          "AVXRPG walkthrough",
+          "AVXRPG best build",
+          "AVXRPG tier list",
+          "AVXRPG map",
+          "AVXRPG boss guide",
+          "AVXRPG items",
+          "AVXRPG weapons",
+          "AVXRPG codes",
+          "AVXRPG achievements",
+          "AVXRPG calculator"
+        ],
+        "currentPlayers": 0,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 40,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "watch",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": {
+        "currentPlayers": 0,
+        "reviewTotal": null,
+        "reviewPositive": null,
+        "reviewNegative": null
+      },
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5461680",
+        "title": "Gembound Demo",
+        "url": "https://store.steampowered.com/app/5461680/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5461680/96d7b59d6495a3e7049bef855200975bd302168e/capsule_231x87.jpg?t=1792872395",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win",
+          "linux"
+        ],
+        "tagIds": [
+          9,
+          122,
+          492
+        ],
+        "kind": "demo",
+        "priceLabel": "Free",
+        "isFree": true,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 42,
+        "signals": [
+          "24 小时发布窗口",
+          "免费游玩"
+        ],
+        "keywordIdeas": [
+          "Gembound Demo wiki",
+          "Gembound Demo guide",
+          "Gembound Demo walkthrough",
+          "Gembound Demo best build",
+          "Gembound Demo tier list",
+          "Gembound Demo map",
+          "Gembound Demo boss guide",
+          "Gembound Demo items",
+          "Gembound Demo weapons",
+          "Gembound Demo codes",
+          "Gembound Demo achievements",
+          "Gembound Demo calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "skip",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "4460200",
+        "title": "Blow The Cover",
+        "url": "https://store.steampowered.com/app/4460200/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4460200/7d7386a9d247fcf251c385df6d060f136baf0b6a/capsule_231x87.jpg?t=1792870625",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win"
+        ],
+        "tagIds": [
+          19,
+          1687,
+          97070,
+          1697,
+          4182,
+          1774,
+          9204
+        ],
+        "kind": "game",
+        "priceLabel": "$9.99",
+        "isFree": false,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 50,
+        "signals": [
+          "24 小时发布窗口"
+        ],
+        "keywordIdeas": [
+          "Blow The Cover wiki",
+          "Blow The Cover guide",
+          "Blow The Cover walkthrough",
+          "Blow The Cover best build",
+          "Blow The Cover tier list",
+          "Blow The Cover map",
+          "Blow The Cover boss guide",
+          "Blow The Cover items",
+          "Blow The Cover weapons",
+          "Blow The Cover codes",
+          "Blow The Cover achievements",
+          "Blow The Cover calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "watch",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
+    {
+      "game": {
+        "appId": "5455170",
+        "title": "Candy Factory Demo",
+        "url": "https://store.steampowered.com/app/5455170/",
+        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5455170/f645f74cf3db47c0dde2353ca93474793054e7b5/capsule_231x87.jpg?t=1792868748",
+        "releaseDate": "Oct 24, 2026",
+        "releaseDateIso": "2026-10-24T00:00:00.000Z",
+        "daysSinceRelease": 0,
+        "platforms": [
+          "win"
+        ],
+        "tagIds": [
+          9,
+          492,
+          597,
+          599
+        ],
+        "kind": "demo",
+        "priceLabel": "Free",
+        "isFree": true,
+        "discountPercent": 0,
+        "reviewLabel": null,
+        "score": 42,
+        "signals": [
+          "24 小时发布窗口",
+          "免费游玩"
+        ],
+        "keywordIdeas": [
+          "Candy Factory Demo wiki",
+          "Candy Factory Demo guide",
+          "Candy Factory Demo walkthrough",
+          "Candy Factory Demo best build",
+          "Candy Factory Demo tier list",
+          "Candy Factory Demo map",
+          "Candy Factory Demo boss guide",
+          "Candy Factory Demo items",
+          "Candy Factory Demo weapons",
+          "Candy Factory Demo codes",
+          "Candy Factory Demo achievements",
+          "Candy Factory Demo calculator"
+        ],
+        "currentPlayers": null,
+        "playerDelta3h": null,
+        "reviewTotal": null,
+        "reviewDelta6h": null,
+        "evidenceCoverage": 20,
+        "siteScore": null,
+        "confidenceScore": 20,
+        "momentumScore": null,
+        "searchDemandScore": null,
+        "serpOpportunityScore": null,
+        "competitorCount": null,
+        "action": "skip",
+        "confidence": "low",
+        "reasonCodes": [],
+        "missingEvidence": [
+          "PLAYER_HISTORY_3H",
+          "SEARCH",
+          "SERP"
+        ],
+        "searchQueries": [],
+        "matchedIntents": [],
+        "serpProvider": null,
+        "serpResults": [],
+        "trend14d": [],
+        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
+        "watched": false
+      },
+      "live": null,
+      "search": null,
+      "serp": null
+    },
     {
       "game": {
         "appId": "5448620",
@@ -513,7 +1413,7 @@
           "Quick Translate Engine achievements",
           "Quick Translate Engine calculator"
         ],
-        "currentPlayers": 5,
+        "currentPlayers": 2,
         "playerDelta3h": null,
         "reviewTotal": null,
         "reviewDelta6h": null,
@@ -541,7 +1441,7 @@
         "watched": false
       },
       "live": {
-        "currentPlayers": 5,
+        "currentPlayers": 2,
         "reviewTotal": null,
         "reviewPositive": null,
         "reviewNegative": null
@@ -813,7 +1713,7 @@
           "Behind the Corner achievements",
           "Behind the Corner calculator"
         ],
-        "currentPlayers": 2,
+        "currentPlayers": 0,
         "playerDelta3h": null,
         "reviewTotal": null,
         "reviewDelta6h": null,
@@ -841,7 +1741,7 @@
         "watched": false
       },
       "live": {
-        "currentPlayers": 2,
+        "currentPlayers": 0,
         "reviewTotal": null,
         "reviewPositive": null,
         "reviewNegative": null
@@ -891,11 +1791,11 @@
           "CatPoker猫扑克 雪国喵旅组合包 achievements",
           "CatPoker猫扑克 雪国喵旅组合包 calculator"
         ],
-        "currentPlayers": 0,
+        "currentPlayers": null,
         "playerDelta3h": null,
         "reviewTotal": null,
         "reviewDelta6h": null,
-        "evidenceCoverage": 40,
+        "evidenceCoverage": 20,
         "siteScore": null,
         "confidenceScore": 20,
         "momentumScore": null,
@@ -918,12 +1818,7 @@
         "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
         "watched": false
       },
-      "live": {
-        "currentPlayers": 0,
-        "reviewTotal": null,
-        "reviewPositive": null,
-        "reviewNegative": null
-      },
+      "live": null,
       "search": null,
       "serp": null
     },
@@ -974,7 +1869,7 @@
           "Grifford Academy achievements",
           "Grifford Academy calculator"
         ],
-        "currentPlayers": 3,
+        "currentPlayers": 4,
         "playerDelta3h": null,
         "reviewTotal": null,
         "reviewDelta6h": null,
@@ -1002,7 +1897,7 @@
         "watched": false
       },
       "live": {
-        "currentPlayers": 3,
+        "currentPlayers": 4,
         "reviewTotal": null,
         "reviewPositive": null,
         "reviewNegative": null
@@ -2292,7 +3187,7 @@
           "Wild Draw achievements",
           "Wild Draw calculator"
         ],
-        "currentPlayers": 1,
+        "currentPlayers": 0,
         "playerDelta3h": null,
         "reviewTotal": null,
         "reviewDelta6h": null,
@@ -2320,7 +3215,7 @@
         "watched": false
       },
       "live": {
-        "currentPlayers": 1,
+        "currentPlayers": 0,
         "reviewTotal": null,
         "reviewPositive": null,
         "reviewNegative": null
@@ -2884,907 +3779,6 @@
           "Cozy Corner Cafe Demo codes",
           "Cozy Corner Cafe Demo achievements",
           "Cozy Corner Cafe Demo calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "skip",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "4343600",
-        "title": "Mo Wu Tian Gong",
-        "url": "https://store.steampowered.com/app/4343600/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4343600/ae870475697d0a386b040ca052c47e7b2cdec720/capsule_231x87.jpg?t=1792848227",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          19,
-          4182,
-          3859,
-          6506,
-          1678,
-          1643,
-          4106
-        ],
-        "kind": "game",
-        "priceLabel": "$1.79",
-        "isFree": false,
-        "discountPercent": 40,
-        "reviewLabel": null,
-        "score": 58,
-        "signals": [
-          "24 小时发布窗口",
-          "首发折扣 40%"
-        ],
-        "keywordIdeas": [
-          "Mo Wu Tian Gong wiki",
-          "Mo Wu Tian Gong guide",
-          "Mo Wu Tian Gong walkthrough",
-          "Mo Wu Tian Gong best build",
-          "Mo Wu Tian Gong tier list",
-          "Mo Wu Tian Gong map",
-          "Mo Wu Tian Gong boss guide",
-          "Mo Wu Tian Gong items",
-          "Mo Wu Tian Gong weapons",
-          "Mo Wu Tian Gong codes",
-          "Mo Wu Tian Gong achievements",
-          "Mo Wu Tian Gong calculator"
-        ],
-        "currentPlayers": 0,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 40,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "watch",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": {
-        "currentPlayers": 0,
-        "reviewTotal": null,
-        "reviewPositive": null,
-        "reviewNegative": null
-      },
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5122330",
-        "title": "Console Space",
-        "url": "https://store.steampowered.com/app/5122330/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5122330/8fbc3cc31b99a9e1984b5f5119a86c3a9ed9722d/capsule_231x87.jpg?t=1792847865",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          597,
-          1773,
-          3799,
-          10437,
-          4486,
-          4726,
-          3839
-        ],
-        "kind": "game",
-        "priceLabel": "$0.59",
-        "isFree": false,
-        "discountPercent": 40,
-        "reviewLabel": null,
-        "score": 58,
-        "signals": [
-          "24 小时发布窗口",
-          "首发折扣 40%"
-        ],
-        "keywordIdeas": [
-          "Console Space wiki",
-          "Console Space guide",
-          "Console Space walkthrough",
-          "Console Space best build",
-          "Console Space tier list",
-          "Console Space map",
-          "Console Space boss guide",
-          "Console Space items",
-          "Console Space weapons",
-          "Console Space codes",
-          "Console Space achievements",
-          "Console Space calculator"
-        ],
-        "currentPlayers": 0,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 40,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "watch",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": {
-        "currentPlayers": 0,
-        "reviewTotal": null,
-        "reviewPositive": null,
-        "reviewNegative": null
-      },
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5040820",
-        "title": "Hide Your Cash",
-        "url": "https://store.steampowered.com/app/5040820/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5040820/14d438b2c832e87007baa2c59cc0d7e4cc430fe8/capsule_231x87.jpg?t=1792847534",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          7178,
-          1738,
-          745697,
-          3859,
-          1664,
-          597,
-          1775
-        ],
-        "kind": "game",
-        "priceLabel": "$5.99",
-        "isFree": false,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 50,
-        "signals": [
-          "24 小时发布窗口"
-        ],
-        "keywordIdeas": [
-          "Hide Your Cash wiki",
-          "Hide Your Cash guide",
-          "Hide Your Cash walkthrough",
-          "Hide Your Cash best build",
-          "Hide Your Cash tier list",
-          "Hide Your Cash map",
-          "Hide Your Cash boss guide",
-          "Hide Your Cash items",
-          "Hide Your Cash weapons",
-          "Hide Your Cash codes",
-          "Hide Your Cash achievements",
-          "Hide Your Cash calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "watch",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5058690",
-        "title": "Moostache Farm",
-        "url": "https://store.steampowered.com/app/5058690/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5058690/33a350f8f91ddbf5744b66d264fef428f9582123/capsule_231x87.jpg?t=1792846053",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          597,
-          599,
-          615955,
-          560542,
-          87918,
-          8945,
-          12472
-        ],
-        "kind": "game",
-        "priceLabel": "$5.00",
-        "isFree": false,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 50,
-        "signals": [
-          "24 小时发布窗口"
-        ],
-        "keywordIdeas": [
-          "Moostache Farm wiki",
-          "Moostache Farm guide",
-          "Moostache Farm walkthrough",
-          "Moostache Farm best build",
-          "Moostache Farm tier list",
-          "Moostache Farm map",
-          "Moostache Farm boss guide",
-          "Moostache Farm items",
-          "Moostache Farm weapons",
-          "Moostache Farm codes",
-          "Moostache Farm achievements",
-          "Moostache Farm calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "watch",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "3282980",
-        "title": "Urbex Murder",
-        "url": "https://store.steampowered.com/app/3282980/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3282980/b70f09cff11acdb1a8adba802da9db87d7fb4953/capsule_231x87.jpg?t=1792844554",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          1667,
-          3978,
-          3834,
-          3843,
-          4175,
-          21,
-          4508
-        ],
-        "kind": "game",
-        "priceLabel": "$3.99",
-        "isFree": false,
-        "discountPercent": 0,
-        "reviewLabel": "Mostly Positive · 76% of the 17 user reviews for this game are positive.",
-        "score": 62,
-        "signals": [
-          "24 小时发布窗口",
-          "已有评测证据"
-        ],
-        "keywordIdeas": [
-          "Urbex Murder wiki",
-          "Urbex Murder guide",
-          "Urbex Murder walkthrough",
-          "Urbex Murder best build",
-          "Urbex Murder tier list",
-          "Urbex Murder map",
-          "Urbex Murder boss guide",
-          "Urbex Murder items",
-          "Urbex Murder weapons",
-          "Urbex Murder codes",
-          "Urbex Murder achievements",
-          "Urbex Murder calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "watch",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": {
-        "currentPlayers": null,
-        "reviewTotal": null,
-        "reviewPositive": null,
-        "reviewNegative": null
-      },
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5383280",
-        "title": "Mining Days Demo",
-        "url": "https://store.steampowered.com/app/5383280/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5383280/2a7d74def942cb8584ce998f67347cc2f28428f6/capsule_231x87.jpg?t=1792843024",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          492,
-          599
-        ],
-        "kind": "demo",
-        "priceLabel": "Free",
-        "isFree": true,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 42,
-        "signals": [
-          "24 小时发布窗口",
-          "免费游玩"
-        ],
-        "keywordIdeas": [
-          "Mining Days Demo wiki",
-          "Mining Days Demo guide",
-          "Mining Days Demo walkthrough",
-          "Mining Days Demo best build",
-          "Mining Days Demo tier list",
-          "Mining Days Demo map",
-          "Mining Days Demo boss guide",
-          "Mining Days Demo items",
-          "Mining Days Demo weapons",
-          "Mining Days Demo codes",
-          "Mining Days Demo achievements",
-          "Mining Days Demo calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "skip",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5434620",
-        "title": "Hall of Minds Demo",
-        "url": "https://store.steampowered.com/app/5434620/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5434620/15a562560c726043a66453269536118300352121/capsule_231x87.jpg?t=1792841862",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          492,
-          597,
-          599
-        ],
-        "kind": "demo",
-        "priceLabel": "Free",
-        "isFree": true,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 42,
-        "signals": [
-          "24 小时发布窗口",
-          "免费游玩"
-        ],
-        "keywordIdeas": [
-          "Hall of Minds Demo wiki",
-          "Hall of Minds Demo guide",
-          "Hall of Minds Demo walkthrough",
-          "Hall of Minds Demo best build",
-          "Hall of Minds Demo tier list",
-          "Hall of Minds Demo map",
-          "Hall of Minds Demo boss guide",
-          "Hall of Minds Demo items",
-          "Hall of Minds Demo weapons",
-          "Hall of Minds Demo codes",
-          "Hall of Minds Demo achievements",
-          "Hall of Minds Demo calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "skip",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "4832550",
-        "title": "Gather and Rule",
-        "url": "https://store.steampowered.com/app/4832550/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4832550/88c7e0fa9a6b5366bfc6ff7d83d602802c4ea77a/capsule_231x87.jpg?t=1792841589",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          9,
-          1770,
-          14139,
-          4975,
-          3871,
-          5851,
-          4046
-        ],
-        "kind": "game",
-        "priceLabel": "$4.99",
-        "isFree": false,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 50,
-        "signals": [
-          "24 小时发布窗口"
-        ],
-        "keywordIdeas": [
-          "Gather and Rule wiki",
-          "Gather and Rule guide",
-          "Gather and Rule walkthrough",
-          "Gather and Rule best build",
-          "Gather and Rule tier list",
-          "Gather and Rule map",
-          "Gather and Rule boss guide",
-          "Gather and Rule items",
-          "Gather and Rule weapons",
-          "Gather and Rule codes",
-          "Gather and Rule achievements",
-          "Gather and Rule calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "watch",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5248840",
-        "title": "PotionsTidy Demo",
-        "url": "https://store.steampowered.com/app/5248840/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5248840/15b3d2e8680c7df00ede57f4c1e557cf24c1b86d/capsule_231x87.jpg?t=1792841058",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          492,
-          599
-        ],
-        "kind": "demo",
-        "priceLabel": "Free",
-        "isFree": true,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 42,
-        "signals": [
-          "24 小时发布窗口",
-          "免费游玩"
-        ],
-        "keywordIdeas": [
-          "PotionsTidy Demo wiki",
-          "PotionsTidy Demo guide",
-          "PotionsTidy Demo walkthrough",
-          "PotionsTidy Demo best build",
-          "PotionsTidy Demo tier list",
-          "PotionsTidy Demo map",
-          "PotionsTidy Demo boss guide",
-          "PotionsTidy Demo items",
-          "PotionsTidy Demo weapons",
-          "PotionsTidy Demo codes",
-          "PotionsTidy Demo achievements",
-          "PotionsTidy Demo calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "skip",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5452680",
-        "title": "Counterplayed Demo",
-        "url": "https://store.steampowered.com/app/5452680/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5452680/266f4a7d3078d6e623212464230f05c0452575cc/capsule_231x87.jpg?t=1792838585",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          19,
-          597,
-          42804,
-          7178,
-          1716,
-          3871,
-          3993
-        ],
-        "kind": "demo",
-        "priceLabel": "Free",
-        "isFree": true,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 42,
-        "signals": [
-          "24 小时发布窗口",
-          "免费游玩"
-        ],
-        "keywordIdeas": [
-          "Counterplayed Demo wiki",
-          "Counterplayed Demo guide",
-          "Counterplayed Demo walkthrough",
-          "Counterplayed Demo best build",
-          "Counterplayed Demo tier list",
-          "Counterplayed Demo map",
-          "Counterplayed Demo boss guide",
-          "Counterplayed Demo items",
-          "Counterplayed Demo weapons",
-          "Counterplayed Demo codes",
-          "Counterplayed Demo achievements",
-          "Counterplayed Demo calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "skip",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "4726830",
-        "title": "PYTHON:KINGDOM WARS",
-        "url": "https://store.steampowered.com/app/4726830/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4726830/7b00a0c8259526816a5811ee3c9cc16638732e1e/capsule_231x87.jpg?t=1792837855",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [
-          9,
-          5432,
-          1676,
-          255534,
-          5125,
-          4195,
-          5395
-        ],
-        "kind": "game",
-        "priceLabel": "$1.99",
-        "isFree": false,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 50,
-        "signals": [
-          "24 小时发布窗口"
-        ],
-        "keywordIdeas": [
-          "PYTHON:KINGDOM WARS wiki",
-          "PYTHON:KINGDOM WARS guide",
-          "PYTHON:KINGDOM WARS walkthrough",
-          "PYTHON:KINGDOM WARS best build",
-          "PYTHON:KINGDOM WARS tier list",
-          "PYTHON:KINGDOM WARS map",
-          "PYTHON:KINGDOM WARS boss guide",
-          "PYTHON:KINGDOM WARS items",
-          "PYTHON:KINGDOM WARS weapons",
-          "PYTHON:KINGDOM WARS codes",
-          "PYTHON:KINGDOM WARS achievements",
-          "PYTHON:KINGDOM WARS calculator"
-        ],
-        "currentPlayers": null,
-        "playerDelta3h": null,
-        "reviewTotal": null,
-        "reviewDelta6h": null,
-        "evidenceCoverage": 20,
-        "siteScore": null,
-        "confidenceScore": 20,
-        "momentumScore": null,
-        "searchDemandScore": null,
-        "serpOpportunityScore": null,
-        "competitorCount": null,
-        "action": "watch",
-        "confidence": "low",
-        "reasonCodes": [],
-        "missingEvidence": [
-          "PLAYER_HISTORY_3H",
-          "SEARCH",
-          "SERP"
-        ],
-        "searchQueries": [],
-        "matchedIntents": [],
-        "serpProvider": null,
-        "serpResults": [],
-        "trend14d": [],
-        "nextStep": "继续采集玩家历史、搜索与 SERP 证据",
-        "watched": false
-      },
-      "live": null,
-      "search": null,
-      "serp": null
-    },
-    {
-      "game": {
-        "appId": "5353880",
-        "title": "Shooting Birds Carnival Demo",
-        "url": "https://store.steampowered.com/app/5353880/",
-        "capsuleUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5353880/874f09efa4596b13628fb1f55cf1c98b7b1175e7/capsule_231x87.jpg?t=1792837721",
-        "releaseDate": "Oct 24, 2026",
-        "releaseDateIso": "2026-10-24T00:00:00.000Z",
-        "daysSinceRelease": 0,
-        "platforms": [
-          "win"
-        ],
-        "tagIds": [],
-        "kind": "demo",
-        "priceLabel": "Free",
-        "isFree": true,
-        "discountPercent": 0,
-        "reviewLabel": null,
-        "score": 42,
-        "signals": [
-          "24 小时发布窗口",
-          "免费游玩"
-        ],
-        "keywordIdeas": [
-          "Shooting Birds Carnival Demo wiki",
-          "Shooting Birds Carnival Demo guide",
-          "Shooting Birds Carnival Demo walkthrough",
-          "Shooting Birds Carnival Demo best build",
-          "Shooting Birds Carnival Demo tier list",
-          "Shooting Birds Carnival Demo map",
-          "Shooting Birds Carnival Demo boss guide",
-          "Shooting Birds Carnival Demo items",
-          "Shooting Birds Carnival Demo weapons",
-          "Shooting Birds Carnival Demo codes",
-          "Shooting Birds Carnival Demo achievements",
-          "Shooting Birds Carnival Demo calculator"
         ],
         "currentPlayers": null,
         "playerDelta3h": null,
